@@ -34,7 +34,7 @@ public Loader<Cursor> onCreateLoader(int id, Bundle args) {
     .select(
         new SelectPart.Builder()
             .column(ModelContract.Models.COLUMN_NAME_MAKE_NAME)
-            .equals("Jeep").build() 
+            .equals("Jeep")
         )
     .sort(ModelContract.Models.COLUMN_NAME_MODEL, Sort.ASC)
     .build();
