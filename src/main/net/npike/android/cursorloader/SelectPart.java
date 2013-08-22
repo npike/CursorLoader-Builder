@@ -1,5 +1,7 @@
 package net.npike.android.cursorloader;
 
+import java.util.Locale;
+
 public interface SelectPart {
 
 	public String getSelection();
@@ -16,12 +18,26 @@ public interface SelectPart {
 
 			return this;
 		}
+		
+		public Builder column(String table, String column) {
+			mColumn = String.format(Locale.US, "%s.%s", table, column);
 
-		public Builder equals(String value) {
+			return this;
+		}
+
+		public Builder isEqualTo(String value) {
 			mOperation = "=?";
 			mSelectionArg = value;
 
 			return this;
+		}
+		
+		public Builder isEqualTo(int value) {
+			return isEqualTo(String.valueOf(value));
+		}
+		
+		public Builder isEqualTo(boolean value) {
+			return isEqualTo(String.valueOf(value));
 		}
 
 		public SelectPart build() {

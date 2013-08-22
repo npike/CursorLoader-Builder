@@ -23,6 +23,10 @@ public interface Selection {
 		public Builder() {
 
 		}
+		
+		public Builder select(SelectPart.Builder b) {
+			return select(b.build());
+		}
 
 		public Builder select(SelectPart selectPart) {
 			mSelectionArgs = new ArrayList<String>();
@@ -33,12 +37,20 @@ public interface Selection {
 
 			return this;
 		}
+		
+		public Builder and(SelectPart.Builder b) {
+			return and(b.build());
+		}
 
 		public Builder and(SelectPart selectPart) {
 			mSelectionArgs.add(selectPart.getSelectionArg());
 			mSelection.append(" and " + selectPart.getSelection());
 
 			return this;
+		}
+		
+		public Builder or(SelectPart.Builder b) {
+			return or(b.build());
 		}
 
 		public Builder or(SelectPart selectPart) {
